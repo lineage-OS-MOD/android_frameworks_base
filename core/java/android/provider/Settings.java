@@ -4576,7 +4576,14 @@ public final class Settings {
          * Whether to display cross sign for a data disabled connection
          * @hide
          */
+
         public static final String DATA_DISABLED_ICON = "data_disabled_icon";
+
+	/**
+         * Bottom brightness slider
+         * @hide
+         */
+        public static final String QS_BOTTOM_BRIGHTNESS = "qs_bottom_brightness";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings

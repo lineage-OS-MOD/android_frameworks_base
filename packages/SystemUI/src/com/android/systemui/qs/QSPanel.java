@@ -129,6 +129,7 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
         super(context, attrs);
         mContext = context;
         mSettingObserver = new SettingObserver(new Handler(context.getMainLooper()));
+
         setOrientation(VERTICAL);
 
         mBrightnessView = LayoutInflater.from(mContext).inflate(
