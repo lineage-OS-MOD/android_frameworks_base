@@ -46,12 +46,12 @@ public class ScreenPinningNotify {
 
     /** Show "Screen pinned" toast. */
     public void showPinningStartToast() {
-        makeAllUserToastAndShow(R.string.screen_pinning_start);
+        makeAllUserToastAndShow(mContext.getString(R.string.screen_pinning_start));
     }
 
     /** Show "Screen unpinned" toast. */
     public void showPinningExitToast() {
-        makeAllUserToastAndShow(R.string.screen_pinning_exit);
+        makeAllUserToastAndShow(mContext.getString(R.string.screen_pinning_exit));
     }
 
     /** Show a toast that describes the gesture the user should use to escape pinned mode. */
@@ -74,8 +74,8 @@ public class ScreenPinningNotify {
         mLastShowToastTime = showToastTime;
     }
 
-    private Toast makeAllUserToastAndShow(int resId) {
-        Toast toast = SysUIToast.makeText(mContext, resId, Toast.LENGTH_LONG);
+    private Toast makeAllUserToastAndShow(String text) {
+        Toast toast = SysUIToast.makeText(mContext, text, Toast.LENGTH_LONG);
         toast.show();
         return toast;
     }
