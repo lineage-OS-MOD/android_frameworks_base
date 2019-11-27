@@ -4590,6 +4590,13 @@ public final class Settings {
         public static final Validator SHOW_FOURG_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * @hide
+         */
+        public static final String USE_OLD_MOBILETYPE = "use_old_mobiletype";
+
+        private static final Validator USE_OLD_MOBILETYPE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4654,6 +4661,7 @@ public final class Settings {
             DISPLAY_COLOR_MODE,
             ALARM_ALERT,
             NOTIFICATION_LIGHT_PULSE,
+            USE_OLD_MOBILETYPE,
         };
 
         /**
@@ -4775,11 +4783,12 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE);
             PRIVATE_SETTINGS.add(BRIGHTNESS_SLIDER_QS_UNEXPANDED);
             PRIVATE_SETTINGS.add(SHOW_FOURG);
+            PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
         }
 
         /**
          * These are all public system settings
-         *
+          *
          * All settings in {@link SETTINGS_TO_BACKUP} array *must* have a non-null validator,
          * otherwise they won't be restored.
          *
@@ -4872,6 +4881,7 @@ public final class Settings {
                     ACCELEROMETER_ROTATION_ANGLES_VALIDATOR);
             VALIDATORS.put(BRIGHTNESS_SLIDER_QS_UNEXPANDED, BRIGHTNESS_SLIDER_QS_UNEXPANDED_VALIDATOR);
             VALIDATORS.put(SHOW_FOURG, SHOW_FOURG_VALIDATOR);
+            VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
         }
 
         /**
