@@ -162,6 +162,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private boolean mIsQsAutoBrightnessEnabled;
 
     private PrivacyItemController mPrivacyItemController;
+    private boolean mMiuiBrightnessSlider;
 
     private final BroadcastReceiver mRingerReceiver = new BroadcastReceiver() {
         @Override
@@ -449,6 +450,19 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         updateStatusIconAlphaAnimator();
         updateHeaderTextContainerAlphaAnimator();
         updatePrivacyChipAlphaAnimator();
+        updateMiuiSliderView();
+    }
+
+   private void updateSettings() {
+        updateMiuiSliderView();
+    }
+
+    private void updateMiuiSliderView() {
+        mMiuiBrightnessSlider = Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED, 0) != 0;
+        if (mMiuiBrightnessSlider) {
+            removeView(mQuickQsBrightness);
+        }
     }
 
     private void updateStatusIconAlphaAnimator() {
@@ -719,6 +733,18 @@ public class QuickStatusBarHeader extends RelativeLayout implements
             lp.rightMargin = sideMargins;
         }
     }
+
+    private class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = getContext().getContentResolver();
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED),
+                    false, this, UserHandle.USER_ALL);
+        }
 
     @Override
     public void onTuningChanged(String key, String newValue) {
