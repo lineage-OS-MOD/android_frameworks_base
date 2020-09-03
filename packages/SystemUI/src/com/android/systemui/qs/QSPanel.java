@@ -394,6 +394,37 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
         return mExpanded;
     }
 
+    private final class SettingObserver extends ContentObserver {
+        public SettingObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED),
+                    false, this, UserHandle.USER_ALL);
+            update();
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
+            update();
+        }
+
+        public void update() {
+            mQSBrightnessSlider = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED, 0) != 0;
+
+            if (mQSBrightnessSlider) {
+                removeView(mBrightnessView);
+                mBrightnessSlider = 1;
+            }
+         addQSPanel();
+        }
+    }
+
     public void setListening(boolean listening) {
         if (mListening == listening) return;
         mListening = listening;

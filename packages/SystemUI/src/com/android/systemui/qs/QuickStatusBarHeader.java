@@ -462,6 +462,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
             Settings.System.BRIGHTNESS_SLIDER_QS_UNEXPANDED, 0) != 0;
         if (mMiuiBrightnessSlider) {
             removeView(mQuickQsBrightness);
+            mBrightnessSlider = 1;
         }
     }
 
@@ -756,6 +757,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 mIsQuickQsBrightnessEnabled = false;
             }
             updateResources();
+            updateMiuiSliderView();
         } else if (QS_SHOW_AUTO_BRIGHTNESS.equals(key)) {
             mIsQsAutoBrightnessEnabled = TunerService.parseIntegerSwitch(newValue, true);
             updateResources();
