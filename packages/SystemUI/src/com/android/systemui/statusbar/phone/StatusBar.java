@@ -1123,12 +1123,11 @@ public class StatusBar extends SystemUI implements DemoMode,
         // Private API call to make the shadows look better for Recents
         ThreadedRenderer.overrideProperty("ambientRatio", String.valueOf(1.5f));
 
-   }
-
     public void updateBlurVisibility() {
 
         int QSBlurAlpha = Math.round(255.0f * mNotificationPanel.getExpandedFraction());
-        if (QSBlurAlpha > 0 && !blurperformed && !mIsKeyguard) {
+
+        if (QSBlurAlpha > 0 && !blurperformed && mState != StatusBarState.KEYGUARD) {
             Bitmap bittemp = ImageUtilities.blurImage(mContext, ImageUtilities.screenshotSurface(mContext));
             Drawable blurbackground = new BitmapDrawable(mContext.getResources(), bittemp);
             blurperformed = true;
@@ -1139,6 +1138,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
         mQSBlurView.setAlpha(QSBlurAlpha);
         mQSBlurView.getBackground().setAlpha(QSBlurAlpha);
+    }
     }
 
     protected QS createDefaultQSFragment() {
@@ -3324,7 +3324,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     private boolean updateIsKeyguard() {
-        updateBlurVisibility();
         boolean wakeAndUnlocking = mBiometricUnlockController.getMode()
                 == BiometricUnlockController.MODE_WAKE_AND_UNLOCK;
 
