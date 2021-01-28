@@ -4557,12 +4557,6 @@ public final class Settings {
                 SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
 
         /**
-         * Bottom brightness slider
-         * @hide
-         */
-        public static final String QS_BOTTOM_BRIGHTNESS = "qs_bottom_brightness";
-
-        /**
          * Show 4G instead of LTE
          * @hide
          */
