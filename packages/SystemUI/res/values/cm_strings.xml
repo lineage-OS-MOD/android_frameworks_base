@@ -137,9 +137,6 @@
     <string name="applock_fingerprint">&#160;or your fingerprint to unlock.</string>
     <string name="applock_locked_notification">App is locked</string>
 
-    <!-- Alerting notification header label -->
-    <string name="notification_section_header_alerting">Alerting notifications</string>
-
     <!-- Restart SystemUI via Advanced Power Menu -->
     <string name="global_action_restart_systemui">SystemUI</string>
 
