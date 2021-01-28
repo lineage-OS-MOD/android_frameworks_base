@@ -19,5 +19,5 @@ package android.app;
 /** @hide */
 oneway interface IAppLockCallback {
 
-    void onAppStateChanged(String packageName);
+    void onAppStateChanged(String packageName, boolean opened);
 }
