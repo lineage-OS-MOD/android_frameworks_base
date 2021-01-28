@@ -734,11 +734,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         }
     }
 
-    private class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
-            super(handler);
-        }
-
         void observe() {
             ContentResolver resolver = getContext().getContentResolver();
             resolver.registerContentObserver(Settings.System
