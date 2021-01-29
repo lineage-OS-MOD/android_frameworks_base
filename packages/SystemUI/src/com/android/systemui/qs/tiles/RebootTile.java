@@ -44,7 +44,7 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.CUSTOM_QUICK_TILES;
+        return MetricsEvent.LINEAGE;
     }
 
     @Override

@@ -52,7 +52,7 @@ public class MonoToggleTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.ION_IONIZER;
+        return MetricsEvent.LINEAGE;
     }
 
     @Override
