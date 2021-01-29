@@ -53,7 +53,6 @@ import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.PowerShareTile;
 import com.android.systemui.qs.tiles.ProfilesTile;
 import com.android.systemui.qs.tiles.ReadingModeTile;
-import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
@@ -108,7 +107,6 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<VpnTile> mVpnTileProvider;
     private final Provider<GamingModeTile> mGamingModeTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
-    private final Provider<RebootTile> mRebootTileProvider;
     private final Provider<MonoToggleTile> mMonoToggleTileProvider;
 
     private QSTileHost mHost;
@@ -148,7 +146,6 @@ public class QSFactoryImpl implements QSFactory {
             Provider<AODTile> aodTileProvider,
             Provider<GamingModeTile> gamingModeTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
-            Provider<RebootTile> rebootTileProvider,
             Provider<MonoToggleTile> monoToggleTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -184,7 +181,6 @@ public class QSFactoryImpl implements QSFactory {
         mVpnTileProvider = vpnTileProvider;
         mGamingModeTileProvider = gamingModeTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
-        mRebootTileProvider = rebootTileProvider;
         mMonoToggleTileProvider = monoToggleTileProvider;
     }
 
@@ -270,8 +266,6 @@ public class QSFactoryImpl implements QSFactory {
                 return mGamingModeTileProvider.get();
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
-            case "reboot":
-                return mRebootTileProvider.get();
             case "mono":
                 return mMonoToggleTileProvider.get();
         }
